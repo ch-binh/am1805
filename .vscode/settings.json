@@ -1,0 +1,14 @@
+{
+    "nrf-connect.applications": [
+        "${workspaceFolder}\\project\\zephyr\\nordic\\basic_read"
+    ],
+    "files.associations": {
+        "am1805_i2c.h": "c",
+        "hal_i2c.h": "c",
+        "stdint.h": "c",
+        "i2c.h": "c",
+        "devicetree.h": "c",
+        "am1805.h": "c",
+        "am1805_reg.h": "c"
+    }
+}
