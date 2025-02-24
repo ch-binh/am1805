@@ -1,6 +1,9 @@
 {
     "nrf-connect.applications": [
-        "${workspaceFolder}\\project\\zephyr\\nordic\\basic_read"
+        "${workspaceFolder}\\project\\zephyr\\nordic\\basic_read",
+        "${workspaceFolder}\\project\\zephyr\\nordic\\set_alarm_interrupt_out",
+        "${workspaceFolder}\\project\\zephyr\\nordic\\set_timer_interrupt_out",
+        "${workspaceFolder}\\project\\zephyr\\nordic\\basic_lp_read"
     ],
     "files.associations": {
         "am1805_i2c.h": "c",
@@ -9,6 +12,8 @@
         "i2c.h": "c",
         "devicetree.h": "c",
         "am1805.h": "c",
-        "am1805_reg.h": "c"
+        "am1805_reg.h": "c",
+        "type_traits": "c",
+        "device.h": "c"
     }
 }

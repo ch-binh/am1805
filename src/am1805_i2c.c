@@ -16,11 +16,11 @@ int am1805_i2c_read_reg(uint8_t reg, uint8_t *data, uint8_t size)
     return -1; // Error: function not set
 }
 
-int am1805_i2c_write_reg(uint8_t reg, uint8_t value)
+int am1805_i2c_write_reg(uint8_t reg, uint8_t *data, uint8_t size)
 {
     if (i2c_ops.i2c_write)
     {
-        i2c_ops.i2c_write(reg, value);
+        i2c_ops.i2c_write(reg, data, size);
         return 0;
     }
     return -1; // Error: function not set
