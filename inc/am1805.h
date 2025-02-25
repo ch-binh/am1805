@@ -145,6 +145,8 @@ int am1805_cfg_ctrl_output(uint8_t val);
 
 /* REG 0x1C */
 int am1805_cfg_osc_ctrl(uint8_t val);
+/* REG 0x1D */
+int am1805_cfg_osc_sts(uint8_t val);
 /*======================== GET DATA FUNCTIONS ===========================*/
 /* REG 0x00 */
 uint8_t am1805_get_hundredths(void);

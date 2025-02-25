@@ -33,6 +33,7 @@
 
 /* OSCILLATOR REGISTERS */
 #define REG_OSC_CTRL 0x1C
+#define REG_OSC_STS 0x1D
 
 /* MISCELLANEOUS REGISTERS */
 #define REG_CFG_KEY 0x1F
@@ -42,6 +43,14 @@
 #define REG_TIM_CD 0x19
 #define REG_TIM_INITVAL 0x1A
 
+/* ANALOG CONTROL REGISTERS */
+#define REG_TRICKLE 0x20
+#define REG_BREF 0x21
+#define REG_AFCTRL 0x26
+#define REG_BAT_IOREG 0x27
+#define REG_ANA_STS 0x2F
+#define REG_OUTPUT_CTRL 0x30   
+
 /* ID REGISTERS */
 #define REG_ID0 0x28
 #define REG_ID1 0x29
@@ -50,8 +59,6 @@
 #define REG_ID4 0x2C
 #define REG_ID5 0x2D
 #define REG_ID6 0x2E
-
-#define REG_OUTPUT_CTRL 0x30
 
 /*=============== SET VALUE ================*/
 #define INT_MSK_DEF 0xE0 // Reset value of INT mask
@@ -76,6 +83,7 @@
 #define RPT_YEAR 0x04
 #define RPT_ALAM_DISABLE 0x00
 
+#define TFS_128HZ 0x00
 #define TFS_64HZ 0x01
 #define TFS_1HZ 0x02
 #define TFS_1_64HZ 0x03
@@ -85,8 +93,13 @@
 #define CFGKEY_TRICKLE 0x9D
 #define CFGKEY_BREF 0x21
 #define CFGKEY_OUTPUT_CTRL 0x9D
+#define CFGKEY_AFCTRL 0xA0
+#define CFGKEY_BAT_IOREG 0x9D
 
 #define OSC_RC 0x80   // enable 128Hz RC osc
 #define OSC_ACAL 0x40 // enable autocalibration
+#define OSC_OUTB_EN 0x20
+
+#define CTRL1_OUT_EN 0x10
 
 #endif // AM1805_REG_H

@@ -50,10 +50,11 @@ int main(void)
 	hal_i2c_init();
 	am1805_com_init();
 	am1805_init_reg();
+	am1805_set_lp();
 	am1805_print_chip_id();
 
 	// Timeout every 30s, repeat mode
-	timer = TIMER_INIT(TFS_1HZ, TIM_INT_MODE, TIM_RPT_EN, 0x1E, 0x00);
+	timer = TIMER_INIT(TFS_1HZ, TIM_INT_MODE, TIM_RPT_EN, 30, 0x00);
 	am1805_init_timer(&timer);
 
 	while (1)

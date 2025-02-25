@@ -6,19 +6,17 @@
 
 int am1805_init_reg(void)
 {
+    am1805_clear_reg(REG_OSC_STS); // cant clear them all
+    am1805_clear_reg(REG_CTRL1);
+    am1805_cfg_ctrl1(OSC_OUTB_EN | CTRL1_OUT_EN); // SET OUTB bit (pull PSW up)
+
     return 0;
 }
 
 int am1805_set_lp(void)
 {
-    // am1805_i2c_write_reg(REG_CTRL2, (void *)0x00, 1);
-    // am1805_cfg_ctrl2(0b110 << 2);
     am1805_cfg_osc_ctrl(OSC_RC);
-    // am1805_init_alarm(&ALARM_DATETIME_INIT(0, 5, 0x80, 0x80, 0x80, 0x80, 0x80));
-    // am1805_cfg_sleep_ctrl(0x80);
-    //  am1805_cfg_ctrl1(0x80);
 
-    // am1805_cfg_sqw(0x80);
     return 0;
 }
 
@@ -44,7 +42,32 @@ int am1805_init_timer(am_timer_t *timer)
 
 int am1805_clear_reg(uint8_t reg)
 {
-    am1805_i2c_write_reg(reg, (void *)0x00, 1);
+    switch (reg)
+    {
+    case REG_OSC_STS:
+    case REG_OSC_CTRL:
+        am1805_set_cfg_key(CFGKEY_OSC);
+        break;
+    case REG_TRICKLE:
+        am1805_set_cfg_key(CFGKEY_TRICKLE);
+        break;
+    case REG_BREF:
+        am1805_set_cfg_key(CFGKEY_BREF);
+        break;
+    case REG_AFCTRL:
+        am1805_set_cfg_key(CFGKEY_AFCTRL);
+        break;
+    case REG_BAT_IOREG:
+        am1805_set_cfg_key(CFGKEY_BAT_IOREG);
+        break;
+    case REG_OUTPUT_CTRL:
+        am1805_set_cfg_key(CFGKEY_OUTPUT_CTRL);
+        break;
+    default:
+        break;
+    }
+    uint8_t rst[1] = {0x00};
+    am1805_i2c_write_reg(reg, rst, 1);
 }
 /*======================== GET DATETIME FUNCTIONS ===========================*/
 
@@ -236,6 +259,18 @@ int am1805_cfg_osc_ctrl(uint8_t val)
     am1805_i2c_read_reg(REG_OSC_CTRL, buffer, size);
     buffer[0] |= val;
     am1805_i2c_write_reg(REG_OSC_CTRL, buffer, size);
+
+    return 0;
+}
+/* REG 0x1D */
+int am1805_cfg_osc_sts(uint8_t val)
+{
+    uint8_t size = 1;
+    uint8_t buffer[size];
+    am1805_set_cfg_key(CFGKEY_OSC);
+    am1805_i2c_read_reg(REG_OSC_STS, buffer, size);
+    buffer[0] |= val;
+    am1805_i2c_write_reg(REG_OSC_STS, buffer, size);
 
     return 0;
 }

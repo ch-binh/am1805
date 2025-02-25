@@ -45,18 +45,18 @@ void am1805_print_chip_id(void)
 int main(void)
 {
 	datetime_t time;
-	am_timer_t timer;
 
 	hal_i2c_init();
 	am1805_com_init();
 	am1805_init_reg();
-	am1805_set_lp();
+	//am1805_set_lp();
 	am1805_print_chip_id();
+
+	am1805_cfg_ctrl1(0x80);
 
 	while (1)
 	{
 		am1805_get_datetime(&time);
-		am1805_get_tim_cd(&timer);
 		printk("%d-%d-%d-%d %d:%d:%d:%d\n",
 			   time.date.weekdays, time.date.years, time.date.months, time.date.date,
 			   time.time.hours, time.time.minutes,
