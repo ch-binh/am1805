@@ -13,8 +13,8 @@ int am1805_set_lp(void)
 {
     // am1805_i2c_write_reg(REG_CTRL2, (void *)0x00, 1);
     // am1805_cfg_ctrl2(0b110 << 2);
-    // am1805_cfg_osc_ctrl(OSC_RC);
-    // am1805_set_alarm(&ALARM_DATETIME_INIT(0, 5, 0x80, 0x80, 0x80, 0x80, 0x80));
+    am1805_cfg_osc_ctrl(OSC_RC);
+    // am1805_init_alarm(&ALARM_DATETIME_INIT(0, 5, 0x80, 0x80, 0x80, 0x80, 0x80));
     // am1805_cfg_sleep_ctrl(0x80);
     //  am1805_cfg_ctrl1(0x80);
 
@@ -22,11 +22,11 @@ int am1805_set_lp(void)
     return 0;
 }
 
-int am1805_set_alarm(alarm_datetime_t *set_time)
+int am1805_init_alarm(alarm_datetime_t *set_time, uint8_t rpt)
 {
     am1805_cfg_int_msk(INT_MSK_AL);
     am1805_cfg_ctrl2(FOUT_ALL_IRQ);
-    am1805_cfg_tim_ctrl(ALAM_INT_RPT_HS);
+    am1805_cfg_tim_ctrl(rpt);
     am1805_set_alarm_time(set_time);
     return 0;
 }
@@ -35,11 +35,16 @@ int am1805_init_timer(am_timer_t *timer)
 {
     am1805_cfg_int_msk(INT_MSK_TIM);
     am1805_cfg_ctrl2(FOUT_ALL_IRQ);
-    am1805_cfg_tim_ctrl(TIM_EN | timer->irq_mode | timer->irq_rpt |
-                        ALAM_INT_RPT_HS | timer->tfs);
+    am1805_clear_reg(REG_TIM_CTRL);
+    am1805_cfg_tim_ctrl(TIM_EN | timer->irq_mode | timer->trpt | timer->tfs);
     am1805_set_tim_initval(timer);
 
     return 0;
+}
+
+int am1805_clear_reg(uint8_t reg)
+{
+    am1805_i2c_write_reg(reg, (void *)0x00, 1);
 }
 /*======================== GET DATETIME FUNCTIONS ===========================*/
 

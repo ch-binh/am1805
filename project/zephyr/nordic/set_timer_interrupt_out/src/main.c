@@ -52,9 +52,8 @@ int main(void)
 	am1805_init_reg();
 	am1805_print_chip_id();
 
-	am1805_set_datetime(&DATETIME_INIT(0, 0, 2, 0, 1, 1, 0, 0));
-
-	timer = TIMER_INIT(TIM_TFS_1_64HZ, TIM_INT_MODE, TIM_INT_RPT, 0x01, 0x00);
+	// Timeout every 30s, repeat mode
+	timer = TIMER_INIT(TFS_1HZ, TIM_INT_MODE, TIM_RPT_EN, 0x1E, 0x00);
 	am1805_init_timer(&timer);
 
 	while (1)

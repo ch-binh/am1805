@@ -16,9 +16,9 @@
         {hund, sec, min, hr},                                         \
         {date, month, weekday}})
 
-#define TIMER_INIT(tfs, irq_mode, irq_rpt, init_val, cd) \
-    ((am_timer_t){                                       \
-        tfs, irq_mode, irq_rpt, init_val, cd})
+#define TIMER_INIT(tfs, irq_mode, trpt, init_val, cd) \
+    ((am_timer_t){                                    \
+        tfs, irq_mode, trpt, init_val, cd})
 
 typedef struct
 {
@@ -71,7 +71,7 @@ typedef struct
 {
     uint8_t tfs; // timer function select
     uint8_t irq_mode;
-    uint8_t irq_rpt;
+    uint8_t trpt;
     uint8_t init_val;
     uint8_t cd;
 } am_timer_t;
@@ -97,9 +97,10 @@ typedef enum
 /*======================== HANDY FUNCTIONS ===========================*/
 int am1805_init_reg(void);
 int am1805_set_lp(void);
-int am1805_set_alarm(alarm_datetime_t *set_time);
-int am1805_set_datetime(datetime_t *t);
+int am1805_init_alarm(alarm_datetime_t *set_time, uint8_t rpt);
 int am1805_init_timer(am_timer_t *timer);
+int am1805_set_datetime(datetime_t *t);
+int am1805_clear_reg(uint8_t reg);
 
 /*======================== ALARM FUNCTIONS ===========================*/
 

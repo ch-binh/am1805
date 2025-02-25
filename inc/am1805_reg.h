@@ -64,11 +64,21 @@
 
 #define TIM_EN 0x80
 #define TIM_INT_MODE 0x40
-#define TIM_INT_RPT 0x20
-#define ALAM_INT_RPT_HS 0x14 // once per seconds
-#define TIM_TFS_64HZ  0x01
-#define TIM_TFS_1HZ 0x02
-#define TIM_TFS_1_64HZ 0x03
+#define TIM_RPT_EN 0x20
+ 
+
+#define RPT_SEC 0x1C // once per seconds
+#define RPT_MIN 0x18 //
+#define RPT_HOUR 0x14
+#define RPT_DAY 0x10
+#define RPT_WEEK 0x0C
+#define RPT_MON 0x08
+#define RPT_YEAR 0x04
+#define RPT_ALAM_DISABLE 0x00
+
+#define TFS_64HZ 0x01
+#define TFS_1HZ 0x02
+#define TFS_1_64HZ 0x03
 
 #define CFGKEY_OSC 0xA1
 #define CFGKEY_SW_RST 0x3C
@@ -76,7 +86,7 @@
 #define CFGKEY_BREF 0x21
 #define CFGKEY_OUTPUT_CTRL 0x9D
 
-#define OSC_RC 0x80 // enable 128Hz RC osc
+#define OSC_RC 0x80   // enable 128Hz RC osc
 #define OSC_ACAL 0x40 // enable autocalibration
 
 #endif // AM1805_REG_H
