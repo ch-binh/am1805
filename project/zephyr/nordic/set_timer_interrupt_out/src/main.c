@@ -50,7 +50,6 @@ int main(void)
 	hal_i2c_init();
 	am1805_com_init();
 	am1805_init_reg();
-	am1805_set_lp();
 	am1805_print_chip_id();
 
 	// Timeout every 30s, repeat mode

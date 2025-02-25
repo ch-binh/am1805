@@ -68,6 +68,7 @@ int am1805_clear_reg(uint8_t reg)
     }
     uint8_t rst[1] = {0x00};
     am1805_i2c_write_reg(reg, rst, 1);
+    return 0;
 }
 /*======================== GET DATETIME FUNCTIONS ===========================*/
 

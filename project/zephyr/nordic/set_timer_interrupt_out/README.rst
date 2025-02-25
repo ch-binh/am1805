@@ -1,38 +1,25 @@
-.. zephyr:code-sample:: set-timer-interrupt-out
-   :name: Set Timer Interrupt Out
-   :relevant-api: timer_interface
+.. zephyr:code-sample:: i2c-custom-target
+   :name: Set timer interrupt out
 
-   Setup a timer interrupt output 
+   Setup AM1805, timer interrupt and send a i2c read command to fetch date time data.
 
 Overview
 ********
 
-This sample demonstrates how to setup a timer interrupt output.
+Setup AM1805, timer interrupt and send a i2c read command to fetch date time data.
+By default, the timer interrupt is set to 30 seconds. When the timer expires, the
+interrupt is triggered and the timer is reset to 30 seconds.
 
-Description
-******
-
-I dont know why but when the RTC is reset, exactly 3 countdown is needed for
-the countdown timer to work (?).  I have tried set the time registers forward 2 minutes
-but it still takes 3 pulses to start counting down.
-
-By default, the timer will countdown 1 every minutes. If the current value is 0,
-it will increase by 1, so the interrupt period will be (n + 1) minutes.
-
-Requirements
-************
-
-This sample has been tested on :ref:`nrf52840dk_nrf52840`.
-
-Building and Running
-********************
-
-The code for this sample can be found in :zephyr_file:`samples/drivers/timer_interrupt_out`.
-
-To build and flash the application:
-
-.. zephyr-app-commands::
-   :zephyr-app: samples/drivers/timer_interrupt_out
-   :board: nrf52840dk_nrf52840
-   :goals: flash
-   :compact:
+The result will be printed on the console:
+...
+0-0-1-1 0:7:18:24 - timer: 4
+0-0-1-1 0:7:19:24 - timer: 3
+0-0-1-1 0:7:20:24 - timer: 2
+0-0-1-1 0:7:21:25 - timer: 1
+0-0-1-1 0:7:22:25 - timer: 0
+Timmy is triggered 
+0-0-1-1 0:7:23:26 - timer: 30
+0-0-1-1 0:7:24:26 - timer: 29
+0-0-1-1 0:7:25:27 - timer: 28
+0-0-1-1 0:7:26:27 - timer: 27
+...
