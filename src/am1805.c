@@ -1,6 +1,4 @@
 #include "../inc/am1805.h"
-#include "../inc/am1805_i2c.h"
-#include "../inc/am1805_reg.h"
 
 /*======================== HANDY FUNCTIONS ===========================*/
 

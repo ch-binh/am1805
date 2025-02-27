@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#include "am1805_i2c.h"
+#include "am1805_reg.h"
+
 /* Helper macros to fill in datetime info */
 #define DATETIME_INIT(hund, sec, min, hr, date, month, year, weekday) \
     ((datetime_t){                                                    \
