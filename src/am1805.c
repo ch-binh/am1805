@@ -13,8 +13,11 @@ int am1805_init_reg(void)
 
 int am1805_set_lp(void)
 {
+    am1805_clear_reg(REG_CTRL2); // clear all interrupt pin out
+    am1805_cfg_int_msk(0x60);    // set interrupt mode to 1/4 seconds
+    am1805_cfg_sqw(0x7F);        // disable sqw
+    am1805_cfg_tim_ctrl(0x03);   // disable timer
     am1805_cfg_osc_ctrl(OSC_RC);
-
     return 0;
 }
 

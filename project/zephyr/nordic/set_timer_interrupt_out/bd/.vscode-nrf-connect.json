@@ -1,0 +1,20 @@
+{
+  "toolchainPath": "c:\\ncs\\toolchains\\ce3b5ff664",
+  "sdkPath": "c:\\ncs\\v2.7.0",
+  "board": "bastrak_cgw/nrf5340/cpuapp/ns",
+  "boardDirs": [
+    "c:\\z_my_zephyr_projects\\my_board\\boards\\acdvn\\bastrak_cgw"
+  ],
+  "boardRevision": "",
+  "boardDir": "c:\\z_my_zephyr_projects\\my_board\\boards\\acdvn\\bastrak_cgw",
+  "shouldBuild": true,
+  "optimizations": "none",
+  "cmakeArgs": [],
+  "confFiles": [],
+  "buildDirectory": "bd",
+  "kconfigFragments": [],
+  "snippets": [],
+  "dtcOverlays": [],
+  "extraDtcOverlays": [],
+  "boardRoot": "c:\\z_my_zephyr_projects\\my_board"
+}
