@@ -89,7 +89,7 @@ void main(void) {
 - Result: 1.07uA @ 1.8V (datasheet: 50nA chip only)
 
 
-![Power consumption @ 1.8V, supplied with main power, result 1.07uA](power_consumption.png)
+![Power consumption @ 1.8V, supplied with main power, result 1.07uA](doc\power_consumption.png)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
