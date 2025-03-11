@@ -1,7 +1,5 @@
 {
     "nrf-connect.applications": [
-        "${workspaceFolder}\\project\\zephyr\\nordic\\basic_read",
-        "${workspaceFolder}\\project\\zephyr\\nordic\\set_alarm_interrupt_out",
         "${workspaceFolder}\\project\\zephyr\\nordic\\set_timer_interrupt_out"
     ],
     "files.associations": {

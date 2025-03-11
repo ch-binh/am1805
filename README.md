@@ -82,6 +82,15 @@ void main(void) {
     am1805_set_timer(10); // Set a timer for 10 seconds
 }
 ```
+
+## Power Consumption experiment
+- Measurement device: Nordic PPK2
+- Condition: Input supply to VCC2 (main power souce)
+- Result: 1.07uA @ 1.8V (datasheet: 50nA chip only)
+
+
+![Power consumption @ 1.8V, supplied with main power, result 1.07uA](image-1.png)
+
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
